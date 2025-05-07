@@ -3,6 +3,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gray: #888787;
+  --color-primary: #545334;
+  --color-accent: #174c38;
+  --color-background: #878672;
+  --color-gray: #cbcbcb;
   --font-Roboto-mono: "Roboto Mono", monospace;
 }
