@@ -6,7 +6,7 @@ const navLinkClass = "text-sm font-medium hover:text-primary transition";
 
 const Navbar = () => {
   return (
-    <nav className="w-full h-24 px-6 md:px-40 flex items-center justify-between font-Raleway">
+    <nav className="w-full h-24 px-6 md:px-[8rem] flex items-center justify-between">
       {/* Logo & Links */}
       <div className="flex items-center gap-10">
         <Link

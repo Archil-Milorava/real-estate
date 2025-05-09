@@ -1,27 +1,18 @@
 import Map from "../features/Map/Map";
-import PropertyCardMain from "../features/property/PropertyCardMain";
+import PropertyListContainer from "../features/property/PropertyListContainer";
 import AdvancedSearch from "../features/SearchFunction/AdvancedSearch";
 
 const ProperyListPage = () => {
   return (
-    <section className="w-full h-full md:px-[10rem] px-2 ">
-      {/* main div */}
-      {/* advancedSearch */}
+    <section className="w-full min-h-screen md:px-[8rem] px-2 ">
       <div className="">
         <AdvancedSearch />
       </div>
       <div className="flex flex-col gap-2 md:flex-row w-full h-full">
-        {/* list container */}
-        <div className=" w-full md:w-[60%] h-full flex flex-col gap-4 ">
-          <PropertyCardMain />
-          <PropertyCardMain />
-          <PropertyCardMain />
-          <PropertyCardMain />
-          <PropertyCardMain />
-          {/* <PropertyCardMain /> */}
+        <div className="h-full w-[60%]">
+          <PropertyListContainer />
         </div>
-        {/* map */}
-        <div className="h-full w-[40%]">
+        <div className="w-[40%]">
           <Map />
         </div>
       </div>

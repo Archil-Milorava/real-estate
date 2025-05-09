@@ -4,9 +4,9 @@ import { MdOutlineBedroomParent, MdOutlineBathroom } from "react-icons/md";
 
 const PropertyCardMain = () => {
   return (
-    <div className="w-full  h-[14rem] flex rounded-md overflow-hidden shadow-sm">
+    <div className="w-full  h-[12rem] flex rounded-md overflow-hidden shadow-xs">
       {/* Image */}
-      <div className="w-1/3 h-full rounded-xl overflow-hidden">
+      <div className="w-1/3 h-full rounded-sm overflow-hidden">
         <img
           src={TestImg}
           alt="property"
@@ -15,7 +15,7 @@ const PropertyCardMain = () => {
       </div>
 
       {/* Content */}
-      <div className="w-2/3 p-4 flex flex-col justify-between">
+      <div className="w-2/3 pl-2 flex flex-col justify-between">
         {/* Top Section */}
         <div className="flex flex-col items-start h-full justify-between">
           <h1 className="text-lg font-semibold text-gray-800">

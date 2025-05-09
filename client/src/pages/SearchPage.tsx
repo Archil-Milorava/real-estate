@@ -3,7 +3,7 @@ import Button from "../components/ui/Button";
 
 const SearchPage = () => {
   return (
-    <div className="w-full h-screen flex flex-col md:flex-row md:px-[15rem] ">
+    <div className="w-full h-[39rem] flex flex-col md:flex-row md:px-[10rem] ">
       {/* Left section */}
       <div className="h-1/2 md:h-full w-full md:w-1/2 flex flex-col justify-center  px-6 md:px-16 gap-6">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-primary">
