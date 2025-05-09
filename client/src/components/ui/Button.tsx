@@ -20,7 +20,7 @@ const Button: React.FC<ButtonProps> = ({
     primary: "bg-accent text-white hover:opacity-90 ",
     secondary: "bg-background text-white hover:bg-gray-900",
     outline: "border border-gray text-gray-700 hover:bg-gray-100",
-    ghost: "bg-transparent text-gray hover:bg-gray",
+    ghost: "bg-transparent text-black  hover:bg-gray",
   };
 
   const sizes = {

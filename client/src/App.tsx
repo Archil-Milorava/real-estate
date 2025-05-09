@@ -1,11 +1,13 @@
+import Navbar from "./features/navbar/Navbar";
 import ProperyListPage from "./pages/ProperyListPage";
 import SearchPage from "./pages/SearchPage";
 
 const App = () => {
   return (
     <div className="">
-      {/* <SearchPage /> */}
-      <ProperyListPage />
+      <Navbar />
+      <SearchPage />
+      {/* <ProperyListPage /> */}
     </div>
   );
 };
