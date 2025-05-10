@@ -54,7 +54,7 @@ const SinglePropertyPage = () => {
       </div>
 
       {/* Right: Details Sidebar */}
-      <div className="w-full md:w-2/5 shadow-sm p-4 rounded-sm space-y-4">
+      <div className="w-full md:w-2/5  px-4 rounded-sm space-y-4">
         {/* General */}
         <h2 className="text-lg font-semibold">General</h2>
         <div className="flex flex-col gap-3 ">
