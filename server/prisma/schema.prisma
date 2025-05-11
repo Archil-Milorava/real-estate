@@ -16,6 +16,7 @@ model User{
   createdAt DateTime @default(now())
   resetToken String?
   resetTokenExpiry DateTime?
+  reservations Reservation[]
 }
 
 model Property {
@@ -34,6 +35,20 @@ model Property {
   longitude    Float
   ownerName    String
   ownerPic     String
+  reservations Reservation[]
   createdAt    DateTime  @default(now())
 }
 
+model Reservation {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  propertyId  String
+  property    Property @relation(fields: [propertyId], references: [id])
+  startDate   DateTime
+  endDate     DateTime
+  totalPrice  Float
+  status      String   @default("pending") 
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

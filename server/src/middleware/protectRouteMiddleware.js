@@ -17,10 +17,6 @@ export const protectRoute = async (req, res, next) => {
       where: { id: decoded.userId },
       select: {
         id: true,
-        nickName: true,
-        email: true,
-        profileImage: true,
-        createdAt: true,
       },
     });
 
@@ -29,7 +25,6 @@ export const protectRoute = async (req, res, next) => {
     }
 
     req.user = currentUser;
-
     next();
   } catch (error) {
     next(error);
