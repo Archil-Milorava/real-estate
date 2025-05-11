@@ -2,8 +2,8 @@
 
 **API ENDPOINTS**
 
-1. /api/v1/user/signUp
-2. /api/v1/user/signIn
+1. /api/v1/user/signUp (any nickName and any password) post
+2. /api/v1/user/signIn (any nickName and any password)  post
 3. /api/v1/user/signOut
 4. /api/v1/user/currentUser
 

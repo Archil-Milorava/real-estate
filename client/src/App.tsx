@@ -1,15 +1,17 @@
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./features/navbar/Navbar";
+import LoginPage from "./pages/LoginPage";
 import ProperyListPage from "./pages/ProperyListPage";
 import SearchPage from "./pages/SearchPage";
+import SignupPage from "./pages/SignupPage";
 import SinglePropertyPage from "./pages/SinglePropertyPage";
 import UserPage from "./pages/UserPage";
-import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage";
 
 const App = () => {
+
   return (
     <div className="font-Inter">
+
       <Navbar />
       <Routes>
         <Route path="/" element={<SearchPage />} />

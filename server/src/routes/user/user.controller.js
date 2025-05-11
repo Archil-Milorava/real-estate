@@ -1,5 +1,10 @@
 import appError from "../../utils/errorHandler.js";
-import { BAD_REQUEST, CREATED, OK } from "../../constants/http.js";
+import {
+  BAD_REQUEST,
+  CREATED,
+  OK,
+  UNAUTHORIZED,
+} from "../../constants/http.js";
 import { logInValidator, signUpValidator } from "../../utils/validators.js";
 import prisma from "../../utils/prisma.js";
 import { hashPassword, comparePassword } from "../../utils/hashPassword.js";
@@ -20,7 +25,7 @@ export const createUser = async (req, res, next) => {
     });
 
     if (nickNameExists) {
-      throw new appError("The email or nick name already exists", BAD_REQUEST);
+      throw new appError("technical problem, try one more time", BAD_REQUEST);
     }
 
     const hashedPassword = await hashPassword(password);
@@ -66,13 +71,8 @@ export const signIn = async (req, res, next) => {
     handleAccessToken(user.id, res);
 
     res.status(OK).json({
-      user: {
-        id: user.id,
-        nickName: user.nickName,
-        email: user.email,
-        profileImage: user.profileImage,
-        createdAt: user.createdAt,
-      },
+      status: "success",
+      message: "logged in successfully",
     });
   } catch (error) {
     next(error);
@@ -93,11 +93,21 @@ export const signOut = async (req, res, next) => {
 
 export const getCurrentUser = async (req, res, next) => {
   try {
-    const currentUser = req.user;
+    if (!req.user?.id) {
+      throw new appError("Authentication required", UNAUTHORIZED);
+    }
 
-    res.status(OK).json({
-      currentUser,
+    const currentUser = await prisma.user.findUnique({
+      where: { id: req.user.id },
+      select: {
+        id: true,
+        nickName: true,
+        profileImage: true,
+        createdAt: true,
+      },
     });
+
+    res.status(OK).json(currentUser);
   } catch (error) {
     next(error);
   }

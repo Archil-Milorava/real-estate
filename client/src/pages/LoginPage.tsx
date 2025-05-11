@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/ui/Button";
+import { useSignIn } from "../hooks/authHook";
 
 const LoginPage = () => {
-  //   const { signIn, error, isPending, isError } = useSignIn();
+  const { mutate: signIn, error, isPending, isError } = useSignIn();
 
   const [inputElement, setInputelement] = useState({
     nickName: "",
@@ -12,11 +13,15 @@ const LoginPage = () => {
 
   function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // signIn(inputElement);
+    signIn(inputElement);
   }
 
   return (
-    <main className="w-full h-screen flex flex-col items-center justify-center bg-">
+    <main
+      className={`w-full h-screen flex flex-col items-center justify-center ${
+        isPending && "opacity-80"
+      }`}
+    >
       <h1 className="text-accent-foreground text-4xl font-semibold uppercase">
         Sign In
       </h1>
@@ -29,6 +34,11 @@ const LoginPage = () => {
           <input
             type="text"
             placeholder="enter nickname"
+            className={`w-full px-4 py-2 border ${
+              isError ? "border-red-700" : "border-gray-300"
+            } rounded-md focus:outline-none focus:ring-2 
+              "focus:ring-accent"
+             focus:border-transparent transition-all  duration-500`}
             onChange={(e) =>
               setInputelement((prev) => ({ ...prev, nickName: e.target.value }))
             }
@@ -39,15 +49,22 @@ const LoginPage = () => {
           <input
             type="password"
             placeholder="password"
+            className={`w-full px-4 py-2 border ${
+              isError ? "border-red-700" : "border-gray-300"
+            } rounded-md focus:outline-none focus:ring-2 
+              "focus:ring-accent"
+             focus:border-transparent transition-all  duration-500`}
             onChange={(e) =>
               setInputelement((prev) => ({ ...prev, password: e.target.value }))
             }
           />
         </div>
 
-        {/* {isError && <p className="text-xs text-red-700">{error?.message}</p>} */}
+        {isError && <p className="text-xs text-red-700">{error?.message}</p>}
 
-        <Button type="submit">login</Button>
+        <Button disabled={isPending} type="submit">
+          {isPending ? "Loading..." : "Sign In"}
+        </Button>
         <Link to={"/signup"} className="text-sm underline ">
           dont have an Account?
         </Link>
