@@ -55,7 +55,7 @@ const Navbar = () => {
           </Button>
         </div>
       ) : (
-        <Avatar currentUser={currentUser} />
+        <Avatar currentUser={currentUser} isLoading={isLoading} />
       )}
     </nav>
   );

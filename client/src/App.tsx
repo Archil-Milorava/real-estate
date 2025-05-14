@@ -8,10 +8,8 @@ import SinglePropertyPage from "./pages/SinglePropertyPage";
 import UserPage from "./pages/UserPage";
 
 const App = () => {
-
   return (
     <div className="font-Inter">
-
       <Navbar />
       <Routes>
         <Route path="/" element={<SearchPage />} />

@@ -2,21 +2,21 @@ import { BAD_REQUEST, NOT_FOUND, OK } from "../../constants/http.js";
 import appError from "../../utils/errorHandler.js";
 import prisma from "../../utils/prisma.js";
 
-export const getProperties = async (req, res, next) => {
-  try {
-    const properties = await prisma.property.findMany();
+// export const getProperties = async (req, res, next) => {
+//   try {
+//     const properties = await prisma.property.findMany();
 
-    if (properties.length === 0) {
-      return new appError("No properties found", NOT_FOUND);
-    }
+//     if (properties.length === 0) {
+//       return new appError("No properties found", NOT_FOUND);
+//     }
 
-    res.status(OK).json({
-      properties,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
+//     res.status(OK).json({
+//       properties,
+//     });
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 
 export const getPropertyById = async (req, res, next) => {
   try {
@@ -38,7 +38,7 @@ export const getPropertyById = async (req, res, next) => {
   }
 };
 
-export const filterProperties = async (req, res, next) => {
+export const getProperties = async (req, res, next) => {
   try {
     const { city, minPrice, maxPrice, bedrooms, bathroom } = req.query;
 
@@ -71,7 +71,7 @@ export const filterProperties = async (req, res, next) => {
     });
 
     if (properties.length === 0) {
-      throw new appError("No properties found", BAD_REQUEST);
+      throw new appError("No properties found with following data", BAD_REQUEST);
     }
 
     res.status(200).json({

@@ -1,12 +1,12 @@
 import LandingImg from "../assets/searchImg.avif";
-import Button from "../components/ui/Button";
+import GeneralSearch from "../features/SearchFunction/GeneralSearch";
 
 const SearchPage = () => {
   return (
-    <div className="w-full h-[39rem] flex flex-col md:flex-row md:px-[10rem] ">
+    <div className="w-full h-screen flex flex-col  md:flex-row lg:px-[5rem]">
       {/* Left section */}
       <div className="h-1/2 md:h-full w-full md:w-1/2 flex flex-col justify-center  px-6 md:px-16 gap-6">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-primary">
+        <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold leading-tight text-primary">
           Find Your Perfect Place to Call Home
         </h1>
         <p className="text-sm text-gray-600">
@@ -15,15 +15,14 @@ const SearchPage = () => {
           Whether buying or renting, your dream space is just a search away.
         </p>
 
+        <p className="text-xs text-red-700">
+          *The mock data is collected by me, which contains following cities: San
+          Francisco, Istambul, Paris, London, Tbilisi, Lisbon, Austin. If you
+          enter other cities no properties will be found, so do not struggle.
+        </p>
+
         {/* Search bar */}
-        <div className="border border-black/20 p-3 rounded-lg flex w-full mt-2">
-          <input
-            type="text"
-            placeholder="Search by location..."
-            className="flex-grow px-3 py-2 outline-none text-sm"
-          />
-          <Button variant="primary">search</Button>
-        </div>
+        <GeneralSearch />
 
         {/* Stats */}
         <div className="w-full md:flex flex-col hidden gap-6 md:flex-row md:justify-between mt-6">
@@ -43,7 +42,7 @@ const SearchPage = () => {
       </div>
 
       {/* Right image section */}
-      <div className=" w-full  h-1/2 md:h-full md:w-1/2">
+      <div className="w-full  h-1/2 md:h-full md:w-1/2">
         <img
           src={LandingImg}
           alt="landing"
