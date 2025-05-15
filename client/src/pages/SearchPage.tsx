@@ -16,9 +16,14 @@ const SearchPage = () => {
         </p>
 
         <p className="text-xs text-red-700">
-          *The mock data is collected by me, which contains following cities: San
-          Francisco, Istambul, Paris, London, Tbilisi, Lisbon, Austin. If you
-          enter other cities no properties will be found, so do not struggle.
+          *The mock data is collected by me, which contains following cities:
+          San Francisco, Istanbul, Paris, London, Tbilisi, Lisbon, Austin. If
+          you enter other cities no properties will be found, so do not
+          struggle.
+          <br />
+          <br />
+          *Otherwise just hit enter or click search and all properties will be
+          shown
         </p>
 
         {/* Search bar */}

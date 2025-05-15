@@ -1,28 +1,43 @@
 import { useSearchParams } from "react-router-dom";
 import Map from "../features/Map/Map";
-import PropertyListContainer from "../features/property/PropertyListContainer";
+import PropertyCardMain from "../features/property/PropertyCardMain";
 import AdvancedSearch from "../features/SearchFunction/AdvancedSearch";
 import { useGetProperty } from "../hooks/propertyHook";
+import Spinner from "../components/ui/Spinner";
+import ErrorComponent from "../components/ui/ErrorComponent";
 
 const ProperyListPage = () => {
-  const [searhcParams] = useSearchParams();
-  const filters = Object.fromEntries(searhcParams.entries());
-  const { properties, error } = useGetProperty(filters);
-  console.log(properties, error);
+  const [searchParams] = useSearchParams();
+  const city = searchParams.get("city");
+  const filters = Object.fromEntries(searchParams.entries());
+  const { properties, error, isLoading } = useGetProperty(filters);
 
   return (
-    <section className="w-full min-h-screen md:px-[8rem] px-2 ">
-      <div className="">
+    <section className="w-full px-4 mb-11 min-h-screen lg:px-[8rem]  ">
+      <div className="py-2 lg:pr-[8rem]">
         <AdvancedSearch />
       </div>
-      <div className="flex flex-col gap-2 md:flex-row w-full h-full">
-        <div className="h-full w-[60%]">
-          <PropertyListContainer />
+      {error ? (
+        <ErrorComponent message={error.message} />
+      ) : (
+        <div className="flex flex-col gap-11 md:flex-row w-full h-full">
+          <div className="h-full flex flex-col gap-8 w-full lg:w-[55%]">
+            <p className="text-sm">
+              {properties?.length} Properties found in {city || "world"}
+            </p>
+            {isLoading ? (
+              <Spinner />
+            ) : (
+              properties?.map((property) => (
+                <PropertyCardMain key={property.id} property={property} />
+              ))
+            )}
+          </div>
+          <div className="hidden lg:block w-[45%]">
+            <Map />
+          </div>
         </div>
-        <div className="w-[40%]">
-          <Map />
-        </div>
-      </div>
+      )}
     </section>
   );
 };

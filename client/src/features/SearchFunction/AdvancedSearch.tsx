@@ -1,6 +1,19 @@
+import { useSearchParams } from "react-router-dom";
+import Button from "../../components/ui/Button";
+
 const AdvancedSearch = () => {
+  const filters = {
+    city: "",
+    minPrice: 0,
+    maxPrice: 500,
+    bedrooms: "",
+    propertyType: "",
+  };
+
+  const [searchParams, setSearchParmas] = useSearchParams();
+
   return (
-    <div className="my-4 w-full  rounded-md">
+    <form className="my-4 w-full  rounded-md">
       <div className="flex flex-col md:flex-row gap-4">
         {/* Left: City Search */}
         <div className="flex-1 ">
@@ -12,6 +25,7 @@ const AdvancedSearch = () => {
             id="city"
             placeholder="Enter city"
             className="w-full border border-gray-300 rounded px-3 py-1"
+            onChange={(e) => searchParams.set("city", e.target.value)}
           />
         </div>
 
@@ -85,7 +99,8 @@ const AdvancedSearch = () => {
           </div>
         </div>
       </div>
-    </div>
+      <Button type="submit">search</Button>
+    </form>
   );
 };
 

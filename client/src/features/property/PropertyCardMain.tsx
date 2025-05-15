@@ -1,32 +1,40 @@
-import TestImg from "../../assets/test.avif";
 import { CiLocationOn, CiBookmark } from "react-icons/ci";
 import { MdOutlineBedroomParent, MdOutlineBathroom } from "react-icons/md";
+import type { Property } from "../../types/property.type";
+import { Link } from "react-router-dom";
 
-const PropertyCardMain = () => {
+interface PropertyCardMainProps {
+  property: Property;
+}
+
+const PropertyCardMain = ({ property }: PropertyCardMainProps) => {
   return (
-    <div className="w-full  h-[12rem] flex rounded-md overflow-hidden shadow-xs">
+    <Link
+      to={`/${property.id}`}
+      className="w-full h-[15rem] lg:h-[15rem]  flex rounded-sm overflow-hidden p-2 border border-gray-400/50"
+    >
       {/* Image */}
       <div className="w-1/3 h-full rounded-sm overflow-hidden">
         <img
-          src={TestImg}
-          alt="property"
-          className="w-full h-full object-cover"
+          src={property.images[0]}
+          alt={property.name}
+          className="w-full h-full object-cover object-center"
         />
       </div>
 
       {/* Content */}
-      <div className="w-2/3 pl-2 flex flex-col justify-between">
+      <div className="w-2/3 pl-4 flex flex-col justify-between">
         {/* Top Section */}
-        <div className="flex flex-col items-start h-full justify-between">
-          <h1 className="text-lg font-semibold text-gray-800">
-            A Great Apartment Near the Park
+        <div className="flex flex-col items-start h-full justify-between ">
+          <h1 className="text-3xl font-semibold text-gray-900 hover:text-gray-900/70 transition-all duration-200 overflow-hidden">
+            {property.name}
           </h1>
           <p className="flex items-center text-sm text-gray-500">
             <CiLocationOn className="mr-1 text-lg" />
-            456 Park Avenue, London
+            {property.address}
           </p>
-          <span className="text-base font-medium bg-amber-200 px-2 py-1 inline-block rounded">
-            $ 1000
+          <span className="text-base font-medium bg-orange-200 px-2 py-1 inline-block rounded">
+            $ {property.price}
           </span>
         </div>
 
@@ -35,11 +43,17 @@ const PropertyCardMain = () => {
           <div className="flex gap-6 text-sm text-gray-600">
             <div className="flex items-center gap-1 bg-gray-100 rounded-md px-2 py-1 text-xs ">
               <MdOutlineBedroomParent className="text-lg" />
-              <span>2 Bedroom</span>
+              <span>
+                {property.bedrooms}{" "}
+                {property.bedrooms > 1 ? "bedrooms" : "bedroom"}
+              </span>
             </div>
             <div className="flex items-center gap-1 bg-gray-100 rounded-md px-2 py-1 text-xs ">
               <MdOutlineBathroom className="text-lg" />
-              <span>1 Bathroom</span>
+              <span>
+                {property.bathroom}{" "}
+                {property.bathroom > 1 ? "bedrooms" : "bedroom"}
+              </span>
             </div>
           </div>
           <button className="text-gray-500 hover:text-gray-800 transition">
@@ -47,7 +61,7 @@ const PropertyCardMain = () => {
           </button>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
