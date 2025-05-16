@@ -14,9 +14,8 @@ const ProperyListPage = () => {
 
   return (
     <section className="w-full px-4 mb-11 min-h-screen lg:px-[8rem]  ">
-      <div className="py-2 lg:pr-[8rem]">
-        <AdvancedSearch />
-      </div>
+      <AdvancedSearch />
+
       {error ? (
         <ErrorComponent message={error.message} />
       ) : (
