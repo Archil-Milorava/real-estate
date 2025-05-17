@@ -30,9 +30,7 @@ export const getPropertyById = async (req, res, next) => {
       return new appError(`Property with ID ${id} not found`, NOT_FOUND);
     }
 
-    res.status(OK).json({
-      property,
-    });
+    res.status(OK).json(property);
   } catch (error) {
     next(error);
   }
@@ -71,7 +69,10 @@ export const getProperties = async (req, res, next) => {
     });
 
     if (properties.length === 0) {
-      throw new appError("No properties found with following data", BAD_REQUEST);
+      throw new appError(
+        "No properties found with following data",
+        BAD_REQUEST
+      );
     }
 
     res.status(200).json({

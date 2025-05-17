@@ -14,5 +14,5 @@ export type Property = {
   ownerPic: string;
   petsAllowed: boolean;
   price: number;
-  ize: number;
+  size: number;
 };

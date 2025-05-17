@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getProperty } from "../services/propertyAPI";
+import { getProperty, getSingleProperty } from "../services/propertyAPI";
 
 export const useGetProperty = (filters: Record<string, string>) => {
   const { data, error, isLoading } = useQuery({
@@ -10,4 +10,13 @@ export const useGetProperty = (filters: Record<string, string>) => {
   const properties = data?.data;
 
   return { properties, error, isLoading };
+};
+
+export const useGetSingleProperty = (id: string) => {
+  const { data: property, ...rest } = useQuery({
+    queryKey: ["property", id],
+    queryFn: () => getSingleProperty(id),
+  });
+
+  return { property, ...rest };
 };

@@ -9,3 +9,6 @@ type PropertyResponse = {
 export const getProperty = (
   filters: Record<string, string>
 ): Promise<PropertyResponse> => API.get(`/property`, { params: filters });
+
+export const getSingleProperty = (id: string): Promise<Property> =>
+  API.get(`property/${id}`);

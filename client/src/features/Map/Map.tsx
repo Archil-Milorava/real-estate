@@ -10,17 +10,11 @@ interface MapProps {
 
 const center: LatLngExpression = [51.505, -0.09];
 
-const Map = ({ properties , isLoading }: MapProps) => {
-
-
-
+const Map = ({ properties, isLoading }: MapProps) => {
   if (isLoading) {
     return <div className="w-full h-full bg-gray-200 animate-pulse"></div>;
   }
 
-  
-
-  
   return (
     <div className="w-full h-full ">
       <MapContainer
@@ -38,7 +32,11 @@ const Map = ({ properties , isLoading }: MapProps) => {
             position={[Number(item.latitute), Number(item.longitude)]}
           >
             <Popup>
-              {item.address}
+              <div  className="w-[15rem] h-[15rem] overflow-hidden">
+                <img src={item.images[0]} alt={item.name} />
+                <p>{item.address}</p>
+                <h1>{item.name}</h1>
+              </div>
             </Popup>
           </Marker>
         ))}

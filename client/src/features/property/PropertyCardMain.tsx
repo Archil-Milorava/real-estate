@@ -1,7 +1,7 @@
-import { CiLocationOn, CiBookmark } from "react-icons/ci";
-import { MdOutlineBedroomParent, MdOutlineBathroom } from "react-icons/md";
-import type { Property } from "../../types/property.type";
+import { CiLocationOn } from "react-icons/ci";
+import { MdOutlineBathroom, MdOutlineBedroomParent } from "react-icons/md";
 import { Link } from "react-router-dom";
+import type { Property } from "../../types/property.type";
 
 interface PropertyCardMainProps {
   property: Property;
@@ -9,10 +9,7 @@ interface PropertyCardMainProps {
 
 const PropertyCardMain = ({ property }: PropertyCardMainProps) => {
   return (
-    <div
-      
-      className="w-full h-[15rem] lg:h-[15rem]  flex rounded-sm overflow-hidden p-2 border border-gray-400/50"
-    >
+    <div className="w-full h-[15rem] lg:h-[15rem]  flex rounded-sm overflow-hidden p-2 border border-gray-400/50">
       {/* Image */}
       <div className="w-1/3 h-full rounded-sm overflow-hidden">
         <img
@@ -26,9 +23,12 @@ const PropertyCardMain = ({ property }: PropertyCardMainProps) => {
       <div className="w-2/3 pl-4 flex flex-col justify-between">
         {/* Top Section */}
         <div className="flex flex-col items-start h-full justify-between ">
-          <h1 className="text-3xl font-semibold text-gray-900 hover:text-gray-900/70 transition-all duration-200 overflow-hidden">
+          <Link
+            to={`/${property.id}`}
+            className="text-3xl font-semibold text-gray-900 hover:text-gray-900/70 transition-all duration-200 overflow-hidden"
+          >
             {property.name}
-          </h1>
+          </Link>
           <p className="flex items-center text-sm text-gray-500">
             <CiLocationOn className="mr-1 text-lg" />
             {property.address}
@@ -56,9 +56,6 @@ const PropertyCardMain = ({ property }: PropertyCardMainProps) => {
               </span>
             </div>
           </div>
-          <button className="text-gray-500 hover:text-gray-800 transition">
-            <CiBookmark className="text-2xl" />
-          </button>
         </div>
       </div>
     </div>
