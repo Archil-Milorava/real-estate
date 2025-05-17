@@ -51,7 +51,7 @@ const AdvancedSearch = () => {
   };
 
   return (
-    <form onSubmit={handleSearch} className="my-11 w-full rounded-md ">
+    <form onSubmit={handleSearch} className="my-11 w-full rounded-md mx-4 lg:px-[8rem]">
       <div className="flex flex-col md:flex-row gap-4">
         {/* Left: City Search */}
         <div className="flex-1">

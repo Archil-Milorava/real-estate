@@ -12,16 +12,20 @@ const ProperyListPage = () => {
   const filters = Object.fromEntries(searchParams.entries());
   const { properties, error, isLoading } = useGetProperty(filters);
 
+
+
+  
+
   return (
-    <section className="w-full px-4 mb-11 min-h-screen lg:px-[8rem]  ">
+    <section className="w-full px-4 mb-11 min-h-screen   ">
       <AdvancedSearch />
 
       {error ? (
         <ErrorComponent message={error.message} />
       ) : (
-        <div className="flex flex-col gap-11 md:flex-row w-full h-full">
-          <div className="h-full flex flex-col gap-8 w-full lg:w-[55%]">
-            <p className="text-sm">
+        <div className="flex flex-col gap-4 md:flex-row w-full h-full  lg:px-[8rem]">
+          <div className="flex flex-col gap-4 w-full md:w-[65%]  ">
+            <p className="text-lg py-2">
               {properties?.length} Properties found in {city || "world"}
             </p>
             {isLoading ? (
@@ -32,8 +36,8 @@ const ProperyListPage = () => {
               ))
             )}
           </div>
-          <div className="hidden lg:block w-[45%]">
-            <Map />
+          <div className="hidden md:block w-[35%] h-[50rem] sticky top-11 rounded-md overflow-hidden">
+            <Map properties={properties || []} isLoading={isLoading} />
           </div>
         </div>
       )}

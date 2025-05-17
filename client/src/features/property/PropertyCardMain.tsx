@@ -9,8 +9,8 @@ interface PropertyCardMainProps {
 
 const PropertyCardMain = ({ property }: PropertyCardMainProps) => {
   return (
-    <Link
-      to={`/${property.id}`}
+    <div
+      
       className="w-full h-[15rem] lg:h-[15rem]  flex rounded-sm overflow-hidden p-2 border border-gray-400/50"
     >
       {/* Image */}
@@ -61,7 +61,7 @@ const PropertyCardMain = ({ property }: PropertyCardMainProps) => {
           </button>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
