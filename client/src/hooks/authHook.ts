@@ -33,5 +33,7 @@ export const useCurrentUser = () => {
     staleTime: Infinity,
   });
 
-  return { currentUser, ...rest };
+  const userId = currentUser?.id
+
+  return { currentUser, userId, ...rest };
 };

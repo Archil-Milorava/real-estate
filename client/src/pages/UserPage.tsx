@@ -1,4 +1,3 @@
-import PropertyCardMain from "../features/property/PropertyCardMain";
 import ProfilePic from "../assets/profilePic.avif";
 
 const UserPage = () => {
@@ -18,11 +17,7 @@ const UserPage = () => {
       <div>
         <h2 className="text-xl font-semibold mb-4">Saved Properties</h2>
         <div className="flex flex-col gap-8 md:px-[8rem]">
-          <PropertyCardMain />
-          <PropertyCardMain />
-          <PropertyCardMain />
-          <PropertyCardMain />
-          <PropertyCardMain />
+         
         </div>
       </div>
     </section>

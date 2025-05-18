@@ -86,10 +86,10 @@ export const getProperties = async (req, res, next) => {
 
 export const createReservation = async (req, res, next) => {
   try {
-    const { propertyId, startDate, endDate } = req.body;
+    const { propertyId, startDate, endDate, guests, nights, totalPrice } =
+      req.body;
 
     const userId = req.user.id;
-    // console.log(req.user.id);
 
     if (new Date(startDate) >= new Date(endDate)) {
       throw new appError("End date must be after start date", 400);
@@ -102,20 +102,15 @@ export const createReservation = async (req, res, next) => {
     if (!property) {
       throw new appError("Property not found", 404);
     }
-
-    const days = Math.ceil(
-      (new Date(endDate) - new Date(startDate)) / (1000 * 60 * 60 * 24)
-    );
-    const totalPrice = property.price * days;
-
-    const reservation = await prisma.reservation.create({
+    await prisma.reservation.create({
       data: {
         userId,
         propertyId,
         startDate: new Date(startDate),
         endDate: new Date(endDate),
+        guests,
+        nights,
         totalPrice,
-        status: "pending",
       },
       include: {
         property: true,
@@ -132,7 +127,6 @@ export const createReservation = async (req, res, next) => {
 
     res.status(201).json({
       success: true,
-      data: reservation,
     });
   } catch (error) {
     next(error);
@@ -143,19 +137,14 @@ export const getUserReservations = async (req, res, next) => {
   try {
     const userId = req.user.id;
 
-    const reservations = await prisma.reservation.findMany({
+    const myReservations = await prisma.reservation.findMany({
       where: { userId },
       include: {
         property: true,
       },
-      orderBy: {
-        createdAt: "desc",
-      },
     });
 
-    res.status(200).json({
-      reservations,
-    });
+    res.status(200).json(myReservations);
   } catch (error) {
     next(error);
   }

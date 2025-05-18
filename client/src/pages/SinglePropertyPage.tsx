@@ -1,3 +1,4 @@
+import { FaLocationDot } from "react-icons/fa6";
 import { LiaBathSolid } from "react-icons/lia";
 import {
   MdOutlineBedroomParent,
@@ -7,14 +8,13 @@ import {
 import { PiMoneyWavy } from "react-icons/pi";
 import { VscSettings } from "react-icons/vsc";
 import { useParams } from "react-router-dom";
-import Spinner from "../components/ui/Spinner";
-import { useGetSingleProperty } from "../hooks/propertyHook";
-import MapSmall from "../features/Map/MapSmall";
-import { convertToSQMT } from "../utils/helpers";
 import ErrorComponent from "../components/ui/ErrorComponent";
+import Spinner from "../components/ui/Spinner";
 import GalleryMain from "../features/ImageGallery/GalleryMain";
-import { FaLocationDot } from "react-icons/fa6";
-import Calendar from "../components/ui/Calendar";
+import MapSmall from "../features/Map/MapSmall";
+import MakeReservations from "../features/reservations/MakeReservations";
+import { useGetSingleProperty } from "../hooks/propertyHook";
+import { convertToSQMT } from "../utils/helpers";
 
 const SinglePropertyPage = () => {
   const { id } = useParams();
@@ -30,7 +30,7 @@ const SinglePropertyPage = () => {
 
   return (
     <section className="min-h-screen w-full px-2 md:px-[8rem] flex flex-col gap-4 items-center justify-center">
-      <div className="flex flex-col md:flex-row bg-green-300">
+      <div className="flex flex-col md:flex-row ">
         {/* Left: Gallery & Info */}
         <div className="w-full md:w-3/5 space-y-4">
           {/* Image gallery */}
@@ -131,9 +131,8 @@ const SinglePropertyPage = () => {
       </div>
 
       {/* make reservation */}
-      <div className="bg-red-500 h-[80vh] w-full asd">
-        <Calendar />
-      </div>
+
+      <MakeReservations propertyId={id!} price={property.price} />
     </section>
   );
 };

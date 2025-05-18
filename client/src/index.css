@@ -3,8 +3,8 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #545334;
-  --color-accent: #174c38;
+  --color-primary: #174c38;
+  --color-accent: #49ebad;
   --color-background: #878672;
   --color-gray: #cbcbcb;
   --font-Inter:  "Inter", sans-serif;

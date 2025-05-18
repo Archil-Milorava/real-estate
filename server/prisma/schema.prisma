@@ -47,8 +47,9 @@ model Reservation {
   property    Property @relation(fields: [propertyId], references: [id])
   startDate   DateTime
   endDate     DateTime
+  guests      Float
+  nights      Float
   totalPrice  Float
-  status      String   @default("pending") 
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

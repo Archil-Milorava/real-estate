@@ -26,7 +26,7 @@ const MapSmall = ({ property, isLoading }: MapProps) => {
       ? [Number(property.latitute), Number(property.longitude)]
       : [51.505, -0.09]; 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full ">
       <MapContainer
         key={`${property.latitute}-${property.longitude}`}
         center={center}
