@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 const sqmt = 10.76391042;
 
 export const convertToSQMT = (size: number) => Math.floor(size * sqmt);
@@ -10,3 +12,9 @@ export const calculateNights = (
   const day = 24 * 60 * 60 * 1000;
   return (endDate.getTime() - startDate.getTime()) / day;
 };
+
+
+export const extractDate = (date?: Date | string | null) => {
+  if(!date) return "something wrong"
+  return dayjs(date).format("MMM D, YYYY")
+} 

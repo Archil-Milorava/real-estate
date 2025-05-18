@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import {
+  getMyReservations,
   getProperty,
   getSingleProperty,
   makeReservation,
@@ -41,4 +42,13 @@ export const useMakeReservation = () => {
   });
 
   return { createReservations, ...rest };
+};
+
+export const useMyReservations = () => {
+  const { data: myReservations, ...rest } = useQuery({
+    queryKey: ["myReservations"],
+    queryFn: getMyReservations,
+  });
+
+  return { myReservations, ...rest };
 };

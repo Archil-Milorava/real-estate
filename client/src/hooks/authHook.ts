@@ -1,6 +1,7 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { getCurrentUser, signIn, signUp } from "../services/authAPI";
+import { getCurrentUser, signIn, signOut, signUp } from "../services/authAPI";
+import toast from "react-hot-toast";
 
 export const useSignUp = () => {
   const navigate = useNavigate();
@@ -26,6 +27,26 @@ export const useSignIn = () => {
   return { mutate, error, isPending, isError };
 };
 
+export const useSignOut = () => {
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  const { mutate: handleSignOut, ...rest } = useMutation({
+    mutationFn: signOut,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["currentUser"] });
+      navigate("/list");
+      toast.success("Signed out");
+    },
+    onError: (err) => {
+      console.log(err);
+
+      toast.success(err.message);
+    },
+  });
+
+  return { handleSignOut, ...rest };
+};
+
 export const useCurrentUser = () => {
   const { data: currentUser, ...rest } = useQuery({
     queryKey: ["currentUser"],
@@ -33,7 +54,7 @@ export const useCurrentUser = () => {
     staleTime: Infinity,
   });
 
-  const userId = currentUser?.id
+  const userId = currentUser?.id;
 
   return { currentUser, userId, ...rest };
 };

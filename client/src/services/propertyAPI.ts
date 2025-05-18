@@ -1,5 +1,5 @@
 import API from "../config/axiosConfig";
-import type { Property } from "../types/property.type";
+import type { Property, Reservation } from "../types/property.type";
 
 type PropertyResponse = {
   count: number;
@@ -24,3 +24,8 @@ export const getSingleProperty = (id: string): Promise<Property> =>
 
 export const makeReservation = (makeReservationData: MakeReservationData) =>
   API.post("property/createReservation", makeReservationData);
+
+export const getMyReservations = (): Promise<Reservation[]> =>
+  API.get("property/myReservations");
+
+

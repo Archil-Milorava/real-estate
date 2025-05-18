@@ -16,3 +16,16 @@ export type Property = {
   price: number;
   size: number;
 };
+
+export type Reservation = {
+  createdAt: string;
+  endDate: Date;
+  guests: number;
+  id: string;
+  nights: number;
+  property: Property;
+  propertyId: string;
+  startDate: Date;
+  totalPrice: number;
+  userId: string;
+};
