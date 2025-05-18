@@ -2,11 +2,11 @@ import { VscGithubAlt } from "react-icons/vsc";
 
 const Footer = () => {
   return (
-    <div className="bg-background h-[10rem] text-white w-full  flex flex-col items-center justify-center gap-8 py-11 px-4">
+    <div className="bg-primary h-[10rem] text-white w-full  flex flex-col items-center justify-center gap-8 py-11 px-4">
       <p>
         Built by{" "}
         <a href="https://github.com/Archil-Milorava" target="blank">
-          Archil Milorava
+          <span className="text-accent"> Archil Milorava</span>
         </a>
       </p>
 

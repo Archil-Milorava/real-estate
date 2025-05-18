@@ -9,7 +9,7 @@ const ContactPage = () => {
         <div className="flex flex-col px-4 gap-8 items-center justify-center text-center h-full">
           <h1 className="text-6xl">
             This real estate website is built by{" "}
-            <a href="https://github.com/Archil-Milorava" target="blank">
+            <a href="https://github.com/Archil-Milorava" target="blank" className="text-primary">
               Archil Milorava
             </a>
           </h1>
