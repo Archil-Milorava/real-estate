@@ -1,8 +1,7 @@
 import { MdOutlineHomeWork } from "react-icons/md";
 import { Link } from "react-router-dom";
-import Button from "../../components/ui/Button";
-import { useCurrentUser } from "../../hooks/authHook";
 import Avatar from "../../components/ui/Avatar";
+import { useCurrentUser } from "../../hooks/authHook";
 
 const navLinkClass = "text-sm font-medium hover:text-primary transition";
 
@@ -27,18 +26,8 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/about" className={navLinkClass}>
-              About
-            </Link>
-          </li>
-          <li>
             <Link to="/contact" className={navLinkClass}>
               Contact
-            </Link>
-          </li>
-          <li>
-            <Link to="/agent" className={navLinkClass}>
-              Agent
             </Link>
           </li>
         </ul>
@@ -47,12 +36,18 @@ const Navbar = () => {
       {/* Buttons */}
       {!currentUser && !isLoading ? (
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm">
+          <Link
+            to={"/signIn"}
+            className="bg-transparent duration-300 rounded-sm text-black  hover:bg-gray/20 px-3 py-1 text-sm"
+          >
             Sign in
-          </Button>
-          <Button variant="primary" size="sm">
+          </Link>
+          <Link
+            to={"/signUp"}
+            className="bg-accent duration-300 rounded-sm text-white hover:opacity-90  px-3 py-1 text-sm"
+          >
             Sign up
-          </Button>
+          </Link>
         </div>
       ) : (
         <Avatar currentUser={currentUser} isLoading={isLoading} />

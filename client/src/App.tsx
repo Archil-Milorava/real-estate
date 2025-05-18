@@ -6,6 +6,7 @@ import SearchPage from "./pages/SearchPage";
 import SignupPage from "./pages/SignupPage";
 import SinglePropertyPage from "./pages/SinglePropertyPage";
 import UserPage from "./pages/UserPage";
+import ContactPage from "./pages/ContactPage";
 
 const App = () => {
   return (
@@ -15,9 +16,10 @@ const App = () => {
         <Route path="/" element={<SearchPage />} />
         <Route path="/list" element={<ProperyListPage />} />
         <Route path="/profile" element={<UserPage />} />
-        <Route path="/:id" element={<SinglePropertyPage />} />
         <Route path="/signin" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/:id" element={<SinglePropertyPage />} />
       </Routes>
     </div>
   );

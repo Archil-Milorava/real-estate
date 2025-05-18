@@ -17,10 +17,12 @@ export const useSignUp = () => {
 
 export const useSignIn = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const { mutate, error, isPending, isError } = useMutation({
     mutationFn: signIn,
     onSuccess: () => {
-      navigate("/");
+      queryClient.invalidateQueries({ queryKey: ["currentUser"] });
+      navigate("/", { replace: true });
     },
   });
 
@@ -33,6 +35,7 @@ export const useSignOut = () => {
   const { mutate: handleSignOut, ...rest } = useMutation({
     mutationFn: signOut,
     onSuccess: () => {
+      queryClient.setQueryData(["currentUser"], null);
       queryClient.invalidateQueries({ queryKey: ["currentUser"] });
       navigate("/list");
       toast.success("Signed out");
@@ -52,6 +55,7 @@ export const useCurrentUser = () => {
     queryKey: ["currentUser"],
     queryFn: getCurrentUser,
     staleTime: Infinity,
+    retry: 0,
   });
 
   const userId = currentUser?.id;

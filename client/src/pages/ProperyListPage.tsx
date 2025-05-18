@@ -12,10 +12,6 @@ const ProperyListPage = () => {
   const filters = Object.fromEntries(searchParams.entries());
   const { properties, error, isLoading } = useGetProperty(filters);
 
-
-
-  
-
   return (
     <section className="w-full px-4 mb-11 min-h-screen   ">
       <AdvancedSearch />

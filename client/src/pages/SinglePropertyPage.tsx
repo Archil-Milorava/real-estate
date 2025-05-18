@@ -15,6 +15,7 @@ import MapSmall from "../features/Map/MapSmall";
 import MakeReservations from "../features/reservations/MakeReservations";
 import { useGetSingleProperty } from "../hooks/propertyHook";
 import { convertToSQMT } from "../utils/helpers";
+import Footer from "../components/Footer";
 
 const SinglePropertyPage = () => {
   const { id } = useParams();
@@ -133,6 +134,7 @@ const SinglePropertyPage = () => {
       {/* make reservation */}
 
       <MakeReservations propertyId={id!} price={property.price} />
+      <Footer />
     </section>
   );
 };

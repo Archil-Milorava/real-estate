@@ -25,6 +25,10 @@ const LoginPage = () => {
       <h1 className="text-accent-foreground text-4xl font-semibold uppercase">
         Sign In
       </h1>
+      <p className="text-sm text-red-800">
+        *lazy to sign up, use following credentials username: achi | password:
+        123123
+      </p>
       <form
         onSubmit={handleLogin}
         className="min-h-[10rem] h-auto w-[25rem]  flex flex-col gap-6 items-center py-3"
@@ -40,7 +44,10 @@ const LoginPage = () => {
               "focus:ring-accent"
              focus:border-transparent transition-all  duration-500`}
             onChange={(e) =>
-              setInputelement((prev) => ({ ...prev, nickName: e.target.value }))
+              setInputelement((prev) => ({
+                ...prev,
+                nickName: e.target.value.trim(),
+              }))
             }
           />
         </div>
@@ -55,7 +62,10 @@ const LoginPage = () => {
               "focus:ring-accent"
              focus:border-transparent transition-all  duration-500`}
             onChange={(e) =>
-              setInputelement((prev) => ({ ...prev, password: e.target.value }))
+              setInputelement((prev) => ({
+                ...prev,
+                password: e.target.value.trim(),
+              }))
             }
           />
         </div>

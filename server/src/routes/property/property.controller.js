@@ -2,7 +2,6 @@ import { BAD_REQUEST, NOT_FOUND, OK } from "../../constants/http.js";
 import appError from "../../utils/errorHandler.js";
 import prisma from "../../utils/prisma.js";
 
-
 export const getPropertyById = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -127,6 +126,9 @@ export const getUserReservations = async (req, res, next) => {
       include: {
         property: true,
       },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
 
     res.status(200).json(myReservations);
@@ -134,4 +136,3 @@ export const getUserReservations = async (req, res, next) => {
     next(error);
   }
 };
-

@@ -25,6 +25,10 @@ const SignupPage = () => {
       <h1 className="text-accent-foreground text-4xl font-semibold uppercase">
         Register
       </h1>
+      <p className="text-sm text-red-800">
+        *lazy to sign up, use following credentials username: achi | password:
+        123123
+      </p>
       <form
         onSubmit={handleSignUp}
         className="min-h-[10rem] h-auto w-[25rem]  flex flex-col gap-6 items-center py-3"

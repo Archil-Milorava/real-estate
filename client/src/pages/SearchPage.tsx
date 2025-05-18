@@ -17,7 +17,7 @@ const SearchPage = () => {
 
         <p className="text-xs text-red-700">
           *The mock data is collected by me, which contains following cities:
-          San Francisco, Istanbul, Paris, London, Tbilisi, Lisbon, Austin. If
+          London, Tbilisi, Istanbul, Paris, Lisbon, San Francisco, Austin. If
           you enter other cities no properties will be found, so do not
           struggle.
           <br />

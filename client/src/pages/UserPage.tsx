@@ -36,9 +36,6 @@ const UserPage = () => {
     <section className="min-h-screen px-4 md:px-[8rem] py-8 bg-gray-50 space-y-8">
       <div className=" flex flex-col items-end gap-4">
         <p className="text-md uppercase"> {currentUser?.nickName}</p>
-        <div className="h-11 w-11 overflow-hidden rounded-full">
-          <img src={currentUser?.profileImage} alt={currentUser?.nickName} />
-        </div>
         <p className="text-sm text-gray-600">
           Since {extractDate(currentUser?.createdAt)}
         </p>
