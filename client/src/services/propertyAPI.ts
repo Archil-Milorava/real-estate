@@ -20,12 +20,12 @@ export const getProperty = (
 ): Promise<PropertyResponse> => API.get(`/property`, { params: filters });
 
 export const getSingleProperty = (id: string): Promise<Property> =>
-  API.get(`property/${id}`);
+  API.get(`/property/${id}`);
 
 export const makeReservation = (makeReservationData: MakeReservationData) =>
   API.post("property/createReservation", makeReservationData);
 
 export const getMyReservations = (): Promise<Reservation[]> =>
-  API.get("property/myReservations");
+  API.get("/property/myReservations");
 
 

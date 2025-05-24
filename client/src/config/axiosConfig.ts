@@ -1,10 +1,7 @@
 import axios from "axios";
 
 const options = {
-  baseURL:
-    import.meta.env.VITE_NODE_ENV === "development"
-      ? import.meta.env.VITE_BASE_URL
-      : "",
+  baseURL: import.meta.env.VITE_BASE_URL,
   withCredentials: true,
 };
 

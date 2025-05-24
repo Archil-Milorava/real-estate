@@ -18,7 +18,7 @@ const Avatar = ({ currentUser, isLoading }: AvatarProps) => {
 
   if (!currentUser) return null;
 
-  const fallback = currentUser.nickName?.charAt(0)?.toUpperCase() ?? "?";
+  const fallback = currentUser.nickName?.charAt(0)?.toUpperCase() ?? "i";
   const hasImage = currentUser.profileImage;
 
   return (
