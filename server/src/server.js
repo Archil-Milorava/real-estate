@@ -6,7 +6,6 @@ import path from "from";
 import errorHandler from "./middleware/errorMiddleware.js";
 import userRoutes from "./routes/user/user.routes.js";
 import propertyRoutes from "./routes/property/property.routes.js";
-import { BAD_REQUEST } from "./constants/http.js";
 
 const app = express();
 const PORT = process.env.PORT || 8000;
