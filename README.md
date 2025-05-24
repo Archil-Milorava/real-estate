@@ -1,4 +1,3 @@
-# Base sql-backend code written by me
 
 **API ENDPOINTS**
 

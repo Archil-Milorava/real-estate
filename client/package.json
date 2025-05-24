@@ -27,6 +27,7 @@
     "react-icons": "^5.5.0",
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^7.6.0",
+    "real-estate": "file:..",
     "tailwindcss": "^4.1.5"
   },
   "devDependencies": {

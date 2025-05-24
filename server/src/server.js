@@ -2,6 +2,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import "dotenv/config";
 import express from "express";
+import path from "from";
 import errorHandler from "./middleware/errorMiddleware.js";
 import userRoutes from "./routes/user/user.routes.js";
 import propertyRoutes from "./routes/property/property.routes.js";
@@ -9,6 +10,7 @@ import { BAD_REQUEST } from "./constants/http.js";
 
 const app = express();
 const PORT = process.env.PORT || 8000;
+const __dirname = path.resolve();
 
 app.use(
   cors({
@@ -25,13 +27,12 @@ app.use(
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.status(200).json({ message: "Welcome to my backend" });
-});
 app.use("/api/v1/user", userRoutes);
-app.use("/api/v1/property", propertyRoutes)
+app.use("/api/v1/property", propertyRoutes);
+
+app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use("*", (req, res) =>
-  res.status(BAD_REQUEST).json({ message: "Route not found" })
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"))
 );
 
 app.use(errorHandler);
